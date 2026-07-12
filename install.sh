@@ -34,6 +34,9 @@ if command -v apt-get &>/dev/null; then
 elif command -v dnf &>/dev/null; then
     dnf install -y -q libayatana-appindicator-gtk3 2>/dev/null || \
         echo -e "  ${BLUE}[i] libayatana-appindicator-gtk3 may already be installed${NC}"
+elif command -v pacman &>/dev/null; then
+    pacman -S --noconfirm --needed libayatana-appindicator 2>/dev/null || \
+        echo -e "  ${BLUE}[i] libayatana-appindicator may already be installed${NC}"
 else
     echo -e "  ${BLUE}[i] Please install AyatanaAppIndicator3 GObject introspection bindings manually${NC}"
 fi
